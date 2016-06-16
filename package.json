@@ -1,0 +1,12 @@
+{
+  "name": "yelp",
+  "version": "1.0.0",
+  "description": "A Yelp-like app built on ReactJS",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Africa Tomahawk",
+  "license": "ISC"
+}
