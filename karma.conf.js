@@ -1,16 +1,36 @@
 // Karma configuration
 // Generated on Mon Jun 27 2016 01:13:18 GMT+0200 (CAT)
 
+var webpackConfig = require('./webpack.config');
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
+    files: [
+      'tests.webpack.js'
+    ],
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'chai'],
+    webpack: webpackConfig,
+    webpackServer: {
+      noInfo: true
+    },
+    reporters: ['spec'],
+    preprocessors: {
+      'tests.webpack.js': ['webpack', 'sourcemap']
+    },
+    plugins: [
+      'karma-mocha',
+      'karma-chai',
+      'karma-webpack',
+      'karma-phantomjs-launcher',
+      'karma-spec-reporter',
+      'karma-sourcemap-loader'
+    ],
 
 
     // list of files / patterns to load in the browser
