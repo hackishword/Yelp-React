@@ -1,3 +1,5 @@
+require('babel-register');
+
 const NODE_ENV = process.env.NODE_ENV;
 const dotenv = require('dotenv');
 
@@ -21,6 +23,7 @@ var config = getConfig({
   isDev: isDev,
   in: join(src, 'app.js'),
   out: dest,
+  clearBeforeBuild: true,
   html: function (context) {
     return {
       'index.html': context.defaultTemplate({
@@ -34,6 +37,12 @@ var config = getConfig({
     }
   }
 });
+
+config.externals = {
+  'react/lib/ReactContext': true,
+  'react/lib/ExecutionEnvironment': true,
+  'react/addons': true
+};
 
 // ENV variables
 const dotEnvVars = dotenv.config();

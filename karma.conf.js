@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Mon Jun 27 2016 01:13:18 GMT+0200 (CAT)
 
+var argv = require('yargs').argv;
+
 var webpackConfig = require('./webpack.config');
 module.exports = function(config) {
   config.set({
@@ -15,6 +17,7 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha', 'chai'],
+    singleRun: !argv.watch,
     webpack: webpackConfig,
     webpackServer: {
       noInfo: true
