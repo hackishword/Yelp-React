@@ -9,8 +9,8 @@
   background: #48b5e9;
   width: 100%;
   padding: 0 25px;
-  height: var(--height);
-  line-height: var(--height);
+  height: 80px;
+  line-height: 80px;
   color: #fff;
 
   a {
