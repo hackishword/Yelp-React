@@ -47,13 +47,13 @@ export class Container extends React.Component {
           <Header />
           <Sidebar title={'Restaurants'} places={this.state.places} />
           <div className={styles.content}>
-
-          </div>
-        </Map>
-
           {this.state.places.map(place => {
             return (<div key={place.id}>{place.name}</div>)
           })}
+          </div>
+        </Map>
+
+
       </div>
     );
   }
