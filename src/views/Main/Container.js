@@ -1,6 +1,7 @@
 import React from 'react';
 import Map, {GoogleApiWrapper} from 'google-maps-react';
 import {searchNearby} from 'utils/googleApiHelpers';
+import Header from 'components/Header/Header';
 
 export class Container extends React.Component {
 
@@ -19,7 +20,7 @@ export class Container extends React.Component {
     const opts = {
       location: map.center,
       radius: '500',
-      types: ['cafe']
+      types: ['school']
     };
     searchNearby(google, map, opts)
       .then((results, pagination) => {
@@ -36,11 +37,12 @@ export class Container extends React.Component {
   render() {
     return (
       <div>
-        Hello from the container
         <Map
           onReady={this.onReady.bind(this)}
           google={this.props.google}
-          visible={false} />
+          visible={false}>
+          <Header />
+        </Map>
 
           {this.state.places.map(place => {
             return (<div key={place.id}>{place.name}</div>)

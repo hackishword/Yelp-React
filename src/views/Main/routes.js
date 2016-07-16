@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 import Container from './Container';
+import Header from '../../components/Header/Header';
 
 class Fish extends React.Component {
   render() {
@@ -17,6 +18,7 @@ export const makeMainRoutes = () => {
     <div>
       <Route path="/" component={Container} />
       <Route path="/dogs" component={Fish} />
+      <Route path="/all" component={Header} />
     </div>
   );
 }
