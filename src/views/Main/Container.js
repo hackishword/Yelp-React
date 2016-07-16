@@ -3,15 +3,38 @@ import Map, {GoogleApiWrapper} from 'google-maps-react';
 
 export class Container extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      places: [],
+      pagination: null
+    }
+  }
+
   onReady(mapProps, map) {
     //  when the map is ready and mounted
+    const {google} = this.props;
+    const opts = {
+      location: map.center,
+      radius: '500',
+      types: ['cafe']
+    };
+    searchNearby(google, map, opts)
+      .then((results, pagination) => {
+        // we got some results and a pagination object
+      }).catch((status, result) => {
+        // an error occured
+      })
   }
 
   render() {
     return (
       <div>
         Hello from the container
-        <Map google={this.props.google} />
+        <Map
+          onReady={this.onReady.bind(this)}
+          google={this.props.google} />
       </div>
     );
   }
